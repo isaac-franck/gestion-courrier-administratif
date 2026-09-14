@@ -446,6 +446,218 @@
 
                             </div>
 
+                            {{-- SEXE --}}
+                            <div class="md:col-span-2">
+
+                               <label class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                                 Sexe
+                                </label>
+
+                                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+
+                                 {{-- HOMME --}}
+                                 <label class="relative cursor-pointer">
+            <input
+                type="radio"
+                name="sexe"
+                value="homme"
+                class="peer sr-only"
+                {{ old('sexe') === 'homme' ? 'checked' : '' }}
+            >
+
+            <div class="flex items-center gap-3 rounded-xl border
+                        border-slate-200 bg-white p-4
+                        transition-all duration-200
+                        hover:border-green-300
+                        hover:bg-green-50
+                        peer-checked:border-green-600
+                        peer-checked:bg-green-50
+                        peer-checked:ring-2
+                        peer-checked:ring-green-600/20
+                        dark:border-slate-700
+                        dark:bg-slate-900
+                        dark:hover:border-green-500/50
+                        dark:hover:bg-green-500/10
+                        dark:peer-checked:border-green-500
+                        dark:peer-checked:bg-green-500/10">
+
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center
+                            rounded-lg bg-slate-100
+                            text-slate-600
+                            dark:bg-slate-800
+                            dark:text-slate-300
+                            peer-checked:bg-green-100
+                            peer-checked:text-green-700
+                            dark:peer-checked:bg-green-500/20
+                            dark:peer-checked:text-green-400">
+
+                    <svg class="h-5 w-5"
+                         fill="none"
+                         stroke="currentColor"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M12 14a5 5 0 100-10
+                                 5 5 0 000 10z
+                                 M12 14v7
+                                 M9 18h6"/>
+                    </svg>
+
+                </div>
+
+                <div>
+                    <p class="text-sm font-semibold text-slate-800 dark:text-white">
+                        Homme
+                    </p>
+
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Je suis un homme
+                    </p>
+                </div>
+
+                <div class="ml-auto flex h-5 w-5 items-center justify-center
+                            rounded-full border border-slate-300
+                            peer-checked:border-green-600
+                            peer-checked:bg-green-600
+                            dark:border-slate-600
+                            dark:peer-checked:border-green-500
+                            dark:peer-checked:bg-green-500">
+
+                    <svg class="hidden h-3 w-3 text-white peer-checked:block"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="3"
+                              d="M5 13l4 4L19 7"/>
+                    </svg>
+
+                </div>
+
+            </div>
+        </label>
+
+
+        {{-- FEMME --}}
+        <label class="relative cursor-pointer">
+
+            <input
+                type="radio"
+                name="sexe"
+                value="femme"
+                class="peer sr-only"
+                {{ old('sexe') === 'femme' ? 'checked' : '' }}
+            >
+
+            <div class="flex items-center gap-3 rounded-xl border
+                        border-slate-200 bg-white p-4
+                        transition-all duration-200
+                        hover:border-green-300
+                        hover:bg-green-50
+                        peer-checked:border-green-600
+                        peer-checked:bg-green-50
+                        peer-checked:ring-2
+                        peer-checked:ring-green-600/20
+                        dark:border-slate-700
+                        dark:bg-slate-900
+                        dark:hover:border-green-500/50
+                        dark:hover:bg-green-500/10
+                        dark:peer-checked:border-green-500
+                        dark:peer-checked:bg-green-500/10">
+
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center
+                            rounded-lg bg-slate-100
+                            text-slate-600
+                            dark:bg-slate-800
+                            dark:text-slate-300">
+
+                    <svg class="h-5 w-5"
+                         fill="none"
+                         stroke="currentColor"
+                         viewBox="0 0 24 24">
+                        <circle cx="10" cy="14" r="4"
+                                stroke-width="2"/>
+                        <path stroke-linecap="round"
+                              stroke-width="2"
+                              d="M13 11l6-6
+                                 M15 5h4v4"/>
+                    </svg>
+
+                </div>
+
+                <div>
+                    <p class="text-sm font-semibold text-slate-800 dark:text-white">
+                        Femme
+                    </p>
+
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Je suis une femme
+                    </p>
+                </div>
+
+                <div class="ml-auto h-5 w-5 rounded-full border
+                            border-slate-300
+                            peer-checked:border-green-600
+                            peer-checked:bg-green-600
+                            dark:border-slate-600
+                            dark:peer-checked:border-green-500">
+                </div>
+
+            </div>
+        </label>
+
+    </div>
+
+    @error('sexe')
+        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+            {{ $message }}
+        </p>
+    @enderror
+
+</div>
+
+{{-- DATE DE NAISSANCE --}}
+<div>
+    <label
+        for="date_naissance"
+        class="mb-2 block text-sm font-semibold
+               text-slate-700 dark:text-slate-200"
+    >
+        Date de naissance
+    </label>
+
+    <div class="relative">
+
+        <input
+            type="date"
+            id="date_naissance"
+            name="date_naissance"
+            value="{{ old('date_naissance') }}"
+            max="{{ now()->subYears(15)->format('Y-m-d') }}"
+            required
+            class="block w-full rounded-xl border
+                   border-slate-200 bg-white px-4 py-3
+                   text-sm text-slate-900
+                   outline-none transition
+                   focus:border-green-500
+                   focus:ring-4 focus:ring-green-500/10
+                   dark:border-slate-700
+                   dark:bg-slate-900
+                   dark:text-white
+                   dark:focus:border-green-500"
+        >
+
+    </div>
+
+    @error('date_naissance')
+        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+            {{ $message }}
+        </p>
+    @enderror
+</div>
+
 
                             {{-- Mot de passe --}}
 

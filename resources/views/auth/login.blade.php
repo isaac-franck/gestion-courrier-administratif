@@ -341,7 +341,7 @@
                             <!-- Formulaire -->
                             <form
                                 method="POST"
-                                action="{{ route('login') }}"
+                                action="{{ route('login.authenticate') }}"
                                 class="space-y-6"
                             >
 

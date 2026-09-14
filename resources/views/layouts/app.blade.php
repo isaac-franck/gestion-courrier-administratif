@@ -7,6 +7,12 @@
 
     <title>{{ $title ?? 'Gestion du courrier' }}</title>
 
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="{{ asset('courrier.svg') }}"
+    >
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 

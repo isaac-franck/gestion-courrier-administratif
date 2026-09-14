@@ -363,3 +363,104 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoPlay();
 
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ==========================================
+    // MENU MOBILE / HAMBURGER
+    // ==========================================
+
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const sidebar = document.getElementById('sidebar');
+    const closeSidebarButton =
+        document.getElementById('closeSidebarButton');
+        const sidebarOverlay =
+        document.getElementById('sidebarOverlay');
+
+        function openSidebar() {
+
+        sidebar.classList.remove('-translate-x-full');
+
+        sidebarOverlay.classList.remove('hidden');
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fermer la sidebar
+    |--------------------------------------------------------------------------
+    */
+
+    function closeSidebar() {
+
+        sidebar.classList.add('-translate-x-full');
+
+        sidebarOverlay.classList.add('hidden');
+
+    }
+
+    if (mobileMenuButton && sidebar) {
+
+        mobileMenuButton.addEventListener('click', () => {
+
+            openSidebar();
+
+        });
+
+    }
+
+    if (closeSidebarButton && sidebar) {
+
+        closeSidebarButton.addEventListener('click', () => {
+
+            closeSidebar();
+
+        });
+
+    }
+
+
+
+    // ==========================================
+    // CHANGEMENT DE THÈME
+    // ==========================================
+
+    const themeToggle = document.getElementById('themeToggle');
+
+    if (themeToggle) {
+
+        themeToggle.addEventListener('click', () => {
+
+            document.documentElement.classList.toggle('dark');
+
+            const isDark =
+                document.documentElement.classList.contains('dark');
+
+            localStorage.setItem(
+                'theme',
+                isDark ? 'dark' : 'light'
+            );
+
+        });
+
+    }
+
+
+    // ==========================================
+    // RESTAURER LE THÈME
+    // ==========================================
+
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+
+        document.documentElement.classList.add('dark');
+
+    } else if (savedTheme === 'light') {
+
+        document.documentElement.classList.remove('dark');
+
+    }
+
+});
